@@ -9,11 +9,11 @@ class PositionChecker {
     this.errors = null
   }
 
-  valid() {
-    this.parsePosition()
+  valid(): boolean {
+    return this.algebraicPosition()
   }
 
-  parsePosition(): boolean {
+  algebraicPosition(): boolean {
     const validationRegex = /^([A-Z]+)([0-9]+)$/
 
     if (validationRegex.test(this.position)) {
@@ -47,6 +47,10 @@ class PositionChecker {
 
   toBitmap(boardSize: number): number {
     const multiplier = PositionChecker.columns.indexOf(this.getCol())
+
+    if (multiplier < 0) {
+      return null
+    }
 
     return multiplier * boardSize + this.getRow()
   }
