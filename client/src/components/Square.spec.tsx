@@ -2,14 +2,17 @@ import { configure, shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import * as React from 'react'
 
-import { Home } from './Home'
+import { Square } from './Square'
+
+const props = {
+  selected: false,
+  odd: false,
+}
 
 configure({ adapter: new Adapter() })
 
-describe(`<Home />`, () => {
+describe(`<Square />`, () => {
   it('renders', () => {
-    const homeComponent = shallow(<Home />)
-
-    expect(homeComponent.exists()).toBeTruthy()
+    expect(shallow(<Square {...props} />).exists()).toBeTruthy()
   })
 })

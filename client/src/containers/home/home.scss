@@ -26,6 +26,18 @@
   }
 }
 
+.main-container {
+  background-color: #535353;
+}
+
+.main-title {
+  background-color: #212121;
+  color: #1db954;
+
+  align-items: center;
+  text-align: center;
+}
+
 @keyframes home-logo-spin {
   from {
     transform: rotate(0deg);

@@ -1,0 +1,13 @@
+.square {
+  height: 8px;
+  width: 8px;
+  background-color: red;
+
+  &.odd {
+    background-color: #400;
+  }
+
+  &.selected {
+    background-color: #1db954;
+  }
+}
