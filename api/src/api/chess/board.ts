@@ -1,6 +1,6 @@
 import { renderBoard } from '../../services/chess/board'
 
-export const board = (req, res) => {
+export const board = (req, res): void => {
   const board = renderBoard()
 
   if (!board) {
