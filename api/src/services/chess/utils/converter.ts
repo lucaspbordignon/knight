@@ -5,12 +5,6 @@ class PositionConverter {
   static readonly rows = Array.from({ length: 8 }, (_, i) => i + 1)
   static readonly displacements = [-17, -15, -10, -6, 6, 10, 15, 17]
 
-  static validMove(position: number): boolean {
-    if (position > 0 && position < 64) return true
-
-    return false
-  }
-
   /* Converts Algebraic coordinates to Bitmap coordinates [1-64] */
   public static toBitmap(position: string, boardSize: number): number {
     const multiplier = PositionConverter.cols.indexOf(this.getCol(position))
