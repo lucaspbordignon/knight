@@ -1,7 +1,11 @@
 .square {
-  height: 8px;
-  width: 8px;
   background-color: red;
+
+  &:after {
+    content: '';
+    display: block;
+    padding-bottom: 100%;
+  }
 
   &.odd {
     background-color: #400;
