@@ -1,13 +1,15 @@
-import { PositionChecker } from './utils'
+import { PositionChecker } from './utils/checker'
+import { PositionConverter } from './utils/converter'
 
 const BOARD_SIZE = 8
 
 /* Apply Breadth First Search to find all positions */
 const possibleMoves = (position: string, turns: number, boardSize: number = BOARD_SIZE): Array<Number> => {
   const checker = new PositionChecker(position)
-  const bitmapPosition = checker.toBitmap(boardSize)
 
-  if (checker.algebraicPosition()) return allValidMoves(0, turns, checker.toBitmap(boardSize))
+  if (checker.isAlgebraicPosition()) {
+    return allValidMoves(0, turns, PositionConverter.toBitmap(position, boardSize))
+  }
 
   return allValidMoves(0, turns, parseInt(position))
 }
@@ -36,8 +38,8 @@ const allValidMoves = (
 }
 
 /* All valid moves for the given position */
-const validMoves = (position: number): Array<number> => {
-  return PositionChecker.displacements
+const validMoves = (position: number): Array<number> =>
+  PositionConverter.displacements
     .map((delta) => {
       const finalPos = delta + position
 
@@ -46,6 +48,5 @@ const validMoves = (position: number): Array<number> => {
       }
     })
     .filter((pos) => pos)
-}
 
 export { possibleMoves }

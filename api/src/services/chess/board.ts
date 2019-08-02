@@ -1,18 +1,17 @@
-import { PositionChecker } from './utils'
+import { PositionConverter } from './utils/converter'
 
 const BOARD_SIZE = 8
 
 const renderBoard = (boardSize = BOARD_SIZE): Array<Array<object>> => {
   const board = []
 
-  PositionChecker.columns.map((col) => {
+  PositionConverter.cols.map((col) => {
     const squares = []
 
-    PositionChecker.rows.map((row) => {
+    PositionConverter.rows.map((row) => {
       const algebraic = col + row.toString()
-      const checker = new PositionChecker(algebraic)
 
-      squares.push({ bitmap: checker.toBitmap(boardSize), algebraic })
+      squares.push({ bitmap: PositionConverter.toBitmap(algebraic, boardSize), algebraic })
     })
 
     board.push(squares)

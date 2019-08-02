@@ -1,5 +1,5 @@
 import { possibleMoves } from '../../services/chess/pieces'
-import { PositionChecker } from '../../services/chess/utils'
+import { PositionChecker } from '../../services/chess/utils/checker'
 
 export const moves = (req, res): void => {
   const { boardSize, piece, position, turns } = req.query
