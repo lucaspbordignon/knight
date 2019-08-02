@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 
 import { Col, Row } from 'antd'
 
-import { getBoard } from '../../redux/ducks/chess'
+import { getBoard, getPossibleMoves } from '../../redux/ducks/chess'
 
 import { Square } from '../../components/Square'
 
@@ -17,9 +17,24 @@ class HomeComponent extends React.Component<any, any> {
   }
 
   renderBoardGrid() {
-    const { board } = this.props.chess
+    const { chess, getPossibleMoves } = this.props
+    const { board, boardSize, possibleMoves } = chess
 
-    return <div>{board.map((boardRow) => boardRow.map((square) => <Square selected={square} odd={false} />))}</div>
+    return (
+      <Row gutter={16}>
+        {board.map((boardRow) =>
+          boardRow.map((square) => (
+            <Square
+              algebraicPosition={square.algebraic}
+              bitmapPosition={square.bitmap}
+              boardSize={boardSize}
+              selectedPositions={possibleMoves}
+              onClick={(position) => getPossibleMoves({ position, turns: 1 })}
+            />
+          )),
+        )}
+      </Row>
+    )
   }
 
   render() {
@@ -35,8 +50,8 @@ class HomeComponent extends React.Component<any, any> {
           </Col>
         </Row>
 
-        <Row gutter={16}>
-          <Col span={20}>{this.renderBoardGrid()}</Col>
+        <Row gutter={16} className="board-container">
+          <Col span={24}>{this.renderBoardGrid()}</Col>
         </Row>
       </div>
     )
@@ -49,6 +64,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getBoard: bindActionCreators(getBoard, dispatch),
+  getPossibleMoves: bindActionCreators(getPossibleMoves, dispatch),
 })
 
 export const Home = connect(
