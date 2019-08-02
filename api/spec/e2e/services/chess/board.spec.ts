@@ -13,7 +13,11 @@ describe('board service', () => {
 
     expect(board).not.toBeUndefined()
     expect(board.length).toEqual(8)
-    expect(_.flattenDeep(board).filter((pos) => pos == true).length).toEqual(0)
+
+    const sampleSquare = board[0][0]
+
+    expect(sampleSquare['algebraic']).not.toBeNull()
+    expect(sampleSquare['bitmap']).not.toBeNull()
   })
 
   it('renders with larger size board', async () => {
@@ -22,7 +26,11 @@ describe('board service', () => {
 
     expect(board).not.toBeUndefined()
     expect(board.length).toEqual(size)
-    expect(_.flattenDeep(board).filter((pos) => pos == true).length).toEqual(0)
+
+    const sampleSquare = board[0][0]
+
+    expect(sampleSquare['algebraic']).not.toBeNull()
+    expect(sampleSquare['bitmap']).not.toBeNull()
   })
 
   it('renders with smaller size board', async () => {
@@ -31,6 +39,10 @@ describe('board service', () => {
 
     expect(board).not.toBeUndefined()
     expect(board.length).toEqual(size)
-    expect(_.flattenDeep(board).filter((pos) => pos == true).length).toEqual(0)
+
+    const sampleSquare = board[0][0]
+
+    expect(sampleSquare['algebraic']).not.toBeNull()
+    expect(sampleSquare['bitmap']).not.toBeNull()
   })
 })
