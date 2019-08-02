@@ -1,7 +1,7 @@
 import _ from 'lodash'
 
-import { PositionChecker } from '../../../../src/services/chess/utils'
-import { clearTestData, db } from '../../../spec-helper'
+import { PositionChecker } from '../../../../../src/services/chess/utils/checker'
+import { clearTestData, db } from '../../../../spec-helper'
 
 describe('chess utils', () => {
   afterEach(async () => {
@@ -25,18 +25,10 @@ describe('chess utils', () => {
         })
       })
 
-      describe('algebraicPosition()', () => {
+      describe('isAlgebraicPosition()', () => {
         it('returns true', async () => {
-          expect(checker.algebraicPosition()).toBeTruthy()
+          expect(checker.isAlgebraicPosition()).toBeTruthy()
           expect(checker.errors).toBeNull()
-        })
-      })
-
-      describe('toBitmap()', () => {
-        it('returns the right value to 8x8 board', async () => {
-          const position = checker.toBitmap(8)
-
-          expect(position).toEqual(19) /* C: Third col, 3: Third row */
         })
       })
     })
@@ -55,18 +47,10 @@ describe('chess utils', () => {
         })
       })
 
-      describe('algebraicPosition()', () => {
+      describe('isAlgebraicPosition()', () => {
         it('returns false', async () => {
-          expect(checker.algebraicPosition()).toBeFalsy()
+          expect(checker.isAlgebraicPosition()).toBeFalsy()
           expect(checker.errors).toEqual('The given position is not in algebraic notation')
-        })
-      })
-
-      describe('toBitmap()', () => {
-        it('returns the right value to 8x8 board', async () => {
-          const position = checker.toBitmap(8)
-
-          expect(position).toBeNull()
         })
       })
     })
