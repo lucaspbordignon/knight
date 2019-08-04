@@ -32,6 +32,14 @@ describe('chess utils', () => {
 
           expect(algPosition).toEqual('C4')
         })
+
+        it('returns the right value to 8x8 board on edge', async () => {
+          position = 8
+
+          const algPosition = converter.toAlgebraic(position, 8)
+
+          expect(algPosition).toEqual('A8')
+        })
       })
     })
   })

@@ -1,9 +1,9 @@
+import { Bitmap } from './bitmap'
 import { PositionChecker } from './checker'
 
 class PositionConverter {
   static readonly cols = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
   static readonly rows = Array.from({ length: 8 }, (_, i) => i + 1)
-  static readonly displacements = [-17, -15, -10, -6, 6, 10, 15, 17]
 
   /* Converts Algebraic coordinates to Bitmap coordinates [1-64] */
   public static toBitmap(position: string, boardSize: number): number {
@@ -16,7 +16,7 @@ class PositionConverter {
 
   /* Converts Bitmap coordinate to Algebraic coordinates ('A1','C8',...) */
   public static toAlgebraic(position: number, boardSize: number): string {
-    const col = this.cols[Math.floor(position / boardSize)]
+    const col = this.cols[this.colBitmapIndex(position, boardSize)]
     const row = this.rows[(position % boardSize || boardSize) - 1]
 
     return col + row
@@ -38,6 +38,12 @@ class PositionConverter {
     if (!checker.valid()) return null
 
     return parseInt(rowRegex.exec(position)[0])
+  }
+
+  public static colBitmapIndex(position: number, boardSize: number) {
+    const colIndex = Math.floor(position / boardSize)
+
+    return position % boardSize === 0 ? colIndex - 1 : colIndex
   }
 }
 
