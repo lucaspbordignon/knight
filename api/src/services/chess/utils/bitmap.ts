@@ -48,12 +48,16 @@ class Bitmap {
   }
 
   public applyMask(columns: Array<string>): void {
+    let finalMask = new Long(Long.UZERO, Long.UZERO, true)
+
     columns.map((col) => {
       const index = PositionConverter.cols.indexOf(col)
       const columnMask = Bitmap.columnMask(index, 8)
 
-      this.map = this.map.and(columnMask)
+      finalMask = finalMask.or(columnMask)
     })
+
+    this.map = this.map.and(finalMask.not())
   }
 
   private singleBitMask(position: number): Long {

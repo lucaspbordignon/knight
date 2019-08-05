@@ -1,4 +1,3 @@
-import { Bitmap } from './bitmap'
 import { PositionChecker } from './checker'
 
 class PositionConverter {
