@@ -23,9 +23,9 @@ const Board: React.FunctionComponent<BoardProps> = (props) => {
   const onClick = (position: number): void => getPossibleMoves({ position, turns })
 
   return (
-    <Card style={{ width: '100%', marginTop: 64 }}>
+    <Card className="board-container">
       <Skeleton loading={loading} active>
-        <Row className="board-container">
+        <Row className="board-content">
           <Col span={24}>
             <Row>
               {data.map((boardRow) =>

@@ -9,6 +9,7 @@ import { getBoard, getPossibleMoves } from '../../redux/ducks/chess'
 import { Board } from '../chess'
 
 import 'antd/dist/antd.css'
+import './home.scss'
 
 class HomeComponent extends React.Component<any, any> {
   componentDidMount() {
@@ -31,7 +32,7 @@ class HomeComponent extends React.Component<any, any> {
           </Menu>
         </Layout.Header>
 
-        <Layout.Content style={{ padding: '0 50px' }}>
+        <Layout.Content className="content-container">
           <Board
             loading={loading}
             size={boardSize}

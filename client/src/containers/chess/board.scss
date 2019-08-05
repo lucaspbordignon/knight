@@ -1,8 +1,10 @@
 .board-container {
-  margin: auto;
+  margin: 5vh 0;
+}
 
-  background-color: #f3f3f3;
-  min-height: 100vh;
+.board-content {
+  padding: 1rem 8rem;
+  min-width: 100%;
 
-  max-width: 80%;
+  max-width: 72%;
 }
