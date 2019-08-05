@@ -1,7 +1,5 @@
-import _ from 'lodash'
-
-import { possibleMoves } from '../../../../src/services/chess/pieces'
-import { clearTestData, db } from '../../../spec-helper'
+import { possibleMoves } from '../../../../../src/services/chess/pieces'
+import { clearTestData, db } from '../../../../spec-helper'
 
 describe('chess pieces service', () => {
   afterEach(async () => {
