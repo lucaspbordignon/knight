@@ -1,5 +1,6 @@
 .square {
   background-color: wheat;
+  cursor: pointer;
 
   &:after {
     content: '';
