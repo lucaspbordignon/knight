@@ -8,6 +8,11 @@
     padding-bottom: 100%;
   }
 
+  &.knight:after {
+    background-image: url('../../assets/icons/knight.svg');
+    background-size: contain;
+  }
+
   &.odd {
     background-color: black;
   }

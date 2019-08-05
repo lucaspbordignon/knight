@@ -48,9 +48,8 @@ class HomeComponent extends React.Component<any, HomeState> {
 
           <p>
             For developers, the code of the application is open source and can be found at
-            <a href="https://github.com/lucaspbordignon/knight" target="_blank">
-              {' '}
-              GitHub{' '}
+            <a href="https://github.com/lucaspbordignon/knight" target="_blank" rel="noopener noreferrer">
+              GitHub
             </a>
           </p>
         </Modal>
@@ -60,7 +59,7 @@ class HomeComponent extends React.Component<any, HomeState> {
 
   render() {
     const { chess, getPossibleMoves } = this.props
-    const { board, boardSize, loading, possibleMoves } = chess
+    const { board, boardSize, loading, possibleMoves, currentPosition } = chess
 
     return (
       <Layout>
@@ -83,6 +82,7 @@ class HomeComponent extends React.Component<any, HomeState> {
             turns={1}
             data={board}
             possibleMoves={possibleMoves}
+            currentPosition={currentPosition}
             getPossibleMoves={getPossibleMoves}
           />
         </Layout.Content>

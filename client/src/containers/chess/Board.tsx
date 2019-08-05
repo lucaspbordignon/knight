@@ -13,12 +13,13 @@ interface BoardProps {
   turns: number
   data: Array<Array<any>>
   possibleMoves: Array<string>
+  currentPosition: string
 
   getPossibleMoves(payload: object): void
 }
 
 const Board: React.FunctionComponent<BoardProps> = (props) => {
-  const { loading, size, turns, data, possibleMoves, getPossibleMoves } = props
+  const { loading, size, turns, data, possibleMoves, currentPosition, getPossibleMoves } = props
 
   const onClick = (position: number): void => getPossibleMoves({ position, turns })
 
@@ -35,6 +36,7 @@ const Board: React.FunctionComponent<BoardProps> = (props) => {
                     bitmapPosition={square.bitmap}
                     boardSize={size}
                     selectedPositions={possibleMoves}
+                    currentPosition={currentPosition}
                     onClick={onClick}
                   />
                 )),

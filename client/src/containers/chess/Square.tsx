@@ -9,12 +9,13 @@ interface SquareProps {
   bitmapPosition: number
   boardSize: number
   selectedPositions: Array<string>
+  currentPosition: string
 
   onClick: (position: any) => void
 }
 
 const Square: React.FunctionComponent<SquareProps> = (props) => {
-  const { algebraicPosition, bitmapPosition, boardSize, selectedPositions } = props
+  const { algebraicPosition, bitmapPosition, boardSize, selectedPositions, currentPosition } = props
 
   /* Check with which color paint the square, based on bitmap position */
   const isOddSquare = (): boolean => {
@@ -29,18 +30,28 @@ const Square: React.FunctionComponent<SquareProps> = (props) => {
   /* Check current position to change square color */
   const isSelected = (): boolean => selectedPositions.indexOf(algebraicPosition) >= 0
 
+  /* Check the knight position */
+  const isKnight = (): boolean => currentPosition === algebraicPosition
+
   const squareClasses = (): string => {
-    if (isSelected()) {
-      return 'square selected'
-    }
-    if (isOddSquare()) {
-      return 'square odd'
+    let classes = 'square'
+
+    if (isKnight()) {
+      classes = classes + ' knight'
     }
 
-    return 'square'
+    if (isSelected()) {
+      return classes + ' selected'
+    }
+
+    if (isOddSquare()) {
+      return classes + ' odd'
+    }
+
+    return classes
   }
 
-  return <Col span={3} className={squareClasses()} onClick={() => props.onClick(algebraicPosition)} />
+  return <Col span={3} onClick={() => props.onClick(algebraicPosition)} className={squareClasses()} />
 }
 
 export { Square }
