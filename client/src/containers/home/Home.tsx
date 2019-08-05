@@ -2,58 +2,46 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { Col, Row } from 'antd'
+import { Icon, Layout, Menu } from 'antd'
 
 import { getBoard, getPossibleMoves } from '../../redux/ducks/chess'
 
-import { Square } from '../../components/Square'
+import { Board } from '../chess'
 
 import 'antd/dist/antd.css'
-import './home.scss'
 
 class HomeComponent extends React.Component<any, any> {
   componentDidMount() {
     this.props.getBoard()
   }
 
-  renderBoardGrid() {
+  render() {
     const { chess, getPossibleMoves } = this.props
-    const { board, boardSize, possibleMoves } = chess
+    const { board, boardSize, loading, possibleMoves } = chess
 
     return (
-      <Row gutter={16}>
-        {board.map((boardRow) =>
-          boardRow.map((square) => (
-            <Square
-              algebraicPosition={square.algebraic}
-              bitmapPosition={square.bitmap}
-              boardSize={boardSize}
-              selectedPositions={possibleMoves}
-              onClick={(position) => getPossibleMoves({ position, turns: 1 })}
-            />
-          )),
-        )}
-      </Row>
-    )
-  }
+      <Layout>
+        <Layout.Header>
+          <div className="logo">Welcome to Knight</div>
 
-  render() {
-    const { loading } = this.props.chess
+          <Menu theme="dark" mode="horizontal" style={{ lineHeight: '64px' }}>
+            <Menu.Item key="settings">
+              <Icon type="setting" />
+            </Menu.Item>
+          </Menu>
+        </Layout.Header>
 
-    return loading ? (
-      <span>Loading...</span>
-    ) : (
-      <div className="main-container">
-        <Row gutter={16} justify="center" align="middle">
-          <Col span={24} className="main-title">
-            <h2>Knight</h2>
-          </Col>
-        </Row>
-
-        <Row gutter={16} className="board-container">
-          <Col span={24}>{this.renderBoardGrid()}</Col>
-        </Row>
-      </div>
+        <Layout.Content style={{ padding: '0 50px' }}>
+          <Board
+            loading={loading}
+            size={boardSize}
+            turns={1}
+            data={board}
+            possibleMoves={possibleMoves}
+            getPossibleMoves={getPossibleMoves}
+          />
+        </Layout.Content>
+      </Layout>
     )
   }
 }

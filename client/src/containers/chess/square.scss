@@ -1,5 +1,5 @@
 .square {
-  background-color: red;
+  background-color: wheat;
 
   &:after {
     content: '';
@@ -8,7 +8,7 @@
   }
 
   &.odd {
-    background-color: #400;
+    background-color: black;
   }
 
   &.selected {
