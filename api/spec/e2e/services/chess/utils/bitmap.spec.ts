@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import Long from 'long'
 
 import { Bitmap } from '../../../../../src/services/chess/utils/bitmap'
 import { clearTestData, db } from '../../../../spec-helper'
@@ -9,6 +9,14 @@ describe('Bitmap data structure', () => {
   })
 
   let bitmap = new Bitmap()
+
+  it('custom constructor', () => {
+    const pos = new Long(0xf00000000, Long.UZERO)
+
+    bitmap = new Bitmap(pos)
+
+    expect(bitmap.map).toEqual(pos)
+  })
 
   describe('setPosition()', () => {
     it('must set upper bits', () => {
