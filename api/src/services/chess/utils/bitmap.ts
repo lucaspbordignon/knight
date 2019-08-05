@@ -1,5 +1,7 @@
 import Long from 'long'
 
+import { PositionConverter } from './converter'
+
 /*
  *  Represents a bitmap (or bitboard) from a chess match. The idea is to
  * store all the board of an 8x8 chess board in a single 64 bits integer.
@@ -10,8 +12,17 @@ class Bitmap {
   lowerBound: number
   upperBound: number
 
-  constructor() {
-    this.map = new Long(Long.UZERO, Long.UZERO, true)
+  public static columnMask(index: number, boardSize: number): Bitmap {
+    const bitmap = new Bitmap()
+    const indexArray = [...new Array(boardSize).keys()].map((i) => i + index * boardSize)
+
+    indexArray.forEach((pos) => bitmap.setPosition(pos))
+
+    return bitmap
+  }
+
+  constructor(map?: Long) {
+    this.map = map || new Long(Long.UZERO, Long.UZERO, true)
     this.lowerBound = 0
     this.upperBound = 63
   }
@@ -34,6 +45,15 @@ class Bitmap {
 
   public isSet(position: number): boolean {
     return !this.map.and(this.singleBitMask(position)).isZero()
+  }
+
+  public applyMask(columns: Array<string>): void {
+    columns.map((col) => {
+      const index = PositionConverter.cols.indexOf(col)
+      const columnMask = Bitmap.columnMask(index, 8)
+
+      this.map = this.map.and(columnMask)
+    })
   }
 
   private singleBitMask(position: number): Long {

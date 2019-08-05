@@ -51,4 +51,35 @@ describe('Bitmap data structure', () => {
       expect(bitmap.isSet(position)).toBeFalsy()
     })
   })
+
+  describe('columnMask()', () => {
+    const size = 8
+
+    it('for column A', () => {
+      const index = 0
+      const columnIndexes = [...new Array(size).keys()]
+
+      const mask = Bitmap.columnMask(index, size)
+
+      columnIndexes.forEach((item) => {
+        expect(mask.isSet(item)).toBeTruthy()
+      })
+    })
+
+    it('for other column', () => {
+      const index = 1
+      const columnIndexes = Array.from({ length: size }, (_, i) => i + size)
+      const otherColumnIndexes = [...new Array(size).keys()] /* Column A */
+
+      const mask = Bitmap.columnMask(index, size)
+
+      columnIndexes.forEach((item) => {
+        expect(mask.isSet(item)).toBeTruthy()
+      })
+
+      otherColumnIndexes.forEach((item) => {
+        expect(mask.isSet(item)).toBeFalsy()
+      })
+    })
+  })
 })
