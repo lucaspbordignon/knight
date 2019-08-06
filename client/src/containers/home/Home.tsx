@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import { Col, Layout, Row, Tabs } from 'antd'
-import { Button, Checkbox, InputNumber, Modal } from 'antd'
+import { Button, Card, Checkbox, Divider, InputNumber, Modal, Slider } from 'antd'
 
 import { ReactComponent as KnightIcon } from '../../assets/icons/logo.svg'
 import { Board } from '../chess'
@@ -65,18 +65,26 @@ class HomeComponent extends React.Component<any, HomeState> {
     const { grid, turns } = chess
 
     return (
-      <Row>
-        <Col span={24}>
-          Number of turns:
-          <InputNumber min={1} max={300} defaultValue={turns} onChange={(turns) => changeTurns({ turns })} />
-        </Col>
+      <Card>
+        <Row gutter={16}>
+          <Col span={24}>Number of turns:</Col>
 
-        <Col span={24}>
-          <Checkbox checked={grid} onChange={(event) => showGrid({ grid: event.target.checked })}>
-            Show chess board grid
-          </Checkbox>
-        </Col>
-      </Row>
+          <Col span={4}>
+            <Slider min={1} max={16} value={turns} onChange={(turns) => changeTurns({ turns })} />
+          </Col>
+
+          <Col span={20}>
+            <InputNumber min={1} max={1000} defaultValue={turns} onChange={(turns) => changeTurns({ turns })} />
+          </Col>
+
+          <Col span={24}>
+            <Divider />
+            <Checkbox checked={grid} onChange={(event) => showGrid({ grid: event.target.checked })}>
+              Show chess board grid
+            </Checkbox>
+          </Col>
+        </Row>
+      </Card>
     )
   }
 
@@ -117,7 +125,7 @@ class HomeComponent extends React.Component<any, HomeState> {
           </Tabs>
         </Layout.Content>
 
-        <Layout.Footer className="footer-container">Made with love by Lucas P. Bordignon</Layout.Footer>
+        <Layout.Footer className="footer-container">Made with ♥ by Lucas Bordignon</Layout.Footer>
 
         {this.renderWelcomeModal()}
       </Layout>

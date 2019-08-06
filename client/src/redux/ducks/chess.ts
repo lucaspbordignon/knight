@@ -5,23 +5,23 @@ import { getBoardData } from '../../api/chess/board'
 import { getPossibleMovesData } from '../../api/chess/pieces'
 
 /* Types */
-const Types = {
-  BOARD: 'chess/GET_BOARD',
-  GRID: 'chess/SHOW_GRID',
-  MOVES: 'chess/GET_POSSIBLE_MOVES',
-  TURNS: 'chess/CHANGE_TURNS',
+export const Types = {
+  CHANGE_TURNS: 'chess/CHANGE_TURNS',
+  GET_BOARD: 'chess/GET_BOARD',
+  GET_POSSIBLE_MOVES: 'chess/GET_POSSIBLE_MOVES',
+  SHOW_GRID: 'chess/SHOW_GRID',
 }
 
 /* Actions */
-export const getBoard = createActionThunk(Types.BOARD, () => getBoardData())
+export const changeTurns = createActionThunk(Types.CHANGE_TURNS, ({ turns }) => {})
 
-export const showGrid = createActionThunk(Types.GRID, ({ grid }) => {})
+export const getBoard = createActionThunk(Types.GET_BOARD, () => getBoardData())
 
-export const getPossibleMoves = createActionThunk(Types.MOVES, ({ position, turns }) =>
+export const getPossibleMoves = createActionThunk(Types.GET_POSSIBLE_MOVES, ({ position, turns }) =>
   getPossibleMovesData(position, turns),
 )
 
-export const changeTurns = createActionThunk(Types.TURNS, ({ turns }) => {})
+export const showGrid = createActionThunk(Types.SHOW_GRID, ({ grid }) => {})
 
 /* Reducers */
 
