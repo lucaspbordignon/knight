@@ -18,7 +18,7 @@ describe('chess utils', () => {
         it('returns the right value to 8x8 board', async () => {
           const bitmapPosition = converter.toBitmap(position, 8)
 
-          expect(bitmapPosition).toEqual(19)
+          expect(bitmapPosition).toEqual(18)
         })
       })
     })
@@ -30,11 +30,11 @@ describe('chess utils', () => {
         it('returns the right value to 8x8 board', async () => {
           const algPosition = converter.toAlgebraic(position, 8)
 
-          expect(algPosition).toEqual('C4')
+          expect(algPosition).toEqual('C5')
         })
 
         it('returns the right value to 8x8 board on edge', async () => {
-          position = 8
+          position = 7
 
           const algPosition = converter.toAlgebraic(position, 8)
 

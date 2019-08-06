@@ -16,7 +16,7 @@ describe('chess pieces service', () => {
         let position = 'D4'
 
         it('returns list of bitmap positions', async () => {
-          const reachable = new Set([11, 13, 18, 22, 34, 38, 43, 45])
+          const reachable = new Set(['B3', 'B5', 'C2', 'C6', 'E2', 'E6', 'F3', 'F5'])
 
           expect(new Set(possibleMoves(position, turns))).toEqual(reachable)
         })
@@ -26,7 +26,7 @@ describe('chess pieces service', () => {
         let position = 'A1'
 
         it('returns list of positions with boundaries', async () => {
-          const reachable = new Set([7, 11, 16, 18])
+          const reachable = new Set(['B3', 'C2'])
 
           expect(new Set(possibleMoves(position, turns))).toEqual(reachable)
         })
@@ -41,36 +41,33 @@ describe('chess pieces service', () => {
 
         it('returns list of bitmap positions', async () => {
           const reachable = new Set([
-            1,
-            5,
-            17,
-            21,
-            26,
-            28,
-            3,
-            7,
-            19,
-            23,
-            30,
-            8,
-            12,
-            24,
-            33,
-            35,
-            16,
-            32,
-            37,
-            39,
-            40,
-            44,
-            49,
-            51,
-            48,
-            53,
-            55,
-            58,
-            60,
-            62,
+            'A1',
+            'A3',
+            'A5',
+            'A7',
+            'B4',
+            'B8',
+            'C1',
+            'C3',
+            'C5',
+            'C7',
+            'D2',
+            'D4',
+            'D6',
+            'D8',
+            'E1',
+            'E3',
+            'E5',
+            'E7',
+            'F4',
+            'F8',
+            'G1',
+            'G3',
+            'G5',
+            'G7',
+            'H2',
+            'H4',
+            'H6',
           ])
 
           expect(new Set(possibleMoves(position, turns))).toEqual(reachable)
@@ -81,7 +78,7 @@ describe('chess pieces service', () => {
         let position = 'A1'
 
         it('returns list of positions with boundaries', async () => {
-          const reachable = new Set([1, 13, 17, 22, 24, 5, 21, 26, 28, 6, 10, 31, 33, 3, 8, 12, 35])
+          const reachable = new Set(['A1', 'A3', 'A5', 'B4', 'C1', 'C5', 'D2', 'D4', 'E1', 'E3'])
 
           expect(new Set(possibleMoves(position, turns))).toEqual(reachable)
         })

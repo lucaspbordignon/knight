@@ -65,7 +65,7 @@ describe('Bitmap data structure', () => {
 
     it('for column A', () => {
       const index = 0
-      const columnIndexes = [...new Array(size).keys()]
+      const columnIndexes = [...new Array(size).keys()].map((i) => index + i * size)
 
       const mask = Bitmap.columnMask(index, size)
 
@@ -75,9 +75,10 @@ describe('Bitmap data structure', () => {
     })
 
     it('for other column', () => {
-      const index = 1
-      const columnIndexes = Array.from({ length: size }, (_, i) => i + size)
-      const otherColumnIndexes = [...new Array(size).keys()] /* Column A */
+      const index = 1 /* Column B */
+      const otherIndex = 0 /* Column A */
+      const columnIndexes = [...new Array(size).keys()].map((i) => index + i * size)
+      const otherColumnIndexes = [...new Array(size).keys()].map((i) => otherIndex + i * size)
 
       const mask = Bitmap.columnMask(index, size)
 

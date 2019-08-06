@@ -11,20 +11,31 @@ describe('Knight', () => {
   describe('moves', () => {
     let piece
     let position
+    let bitmap
 
     describe('find all possible moves', () => {
       it('edge of the board', () => {
         position = 0
         piece = new Knight(position)
 
-        expect(piece.possibleMoves(true)).toEqual([])
+        expect(piece.possibleMoves()).toEqual([10, 17])
       })
 
       it('center of the board', () => {
         position = 31
         piece = new Knight(position)
 
-        expect(piece.possibleMoves()).toEqual([])
+        expect(piece.possibleMoves()).toEqual([14, 21, 37, 46])
+      })
+
+      it('updating bitboard', () => {
+        position = 0
+        piece = new Knight(position)
+
+        bitmap = piece.bitmap
+
+        expect(piece.possibleMoves(true)).toEqual([10, 17])
+        expect(piece.bitmap).not.toEqual(bitmap)
       })
     })
   })
