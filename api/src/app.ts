@@ -17,10 +17,7 @@ app.use(session({ secret: 'ae-boilerplate-super-session-secret', saveUninitializ
 app.use(passport.initialize())
 app.use(passport.session())
 
-if (process.env.NODE_ENV !== 'test') {
-  initializeRequestLogger(app)
-  initializePassport()
-}
+if (process.env.NODE_ENV !== 'test') initializeRequestLogger(app)
 
 if (process.env.NODE_ENV === 'production') {
   const minutesToKeepRequestsInMemory = 15 * 60 * 1000 // 15 minutes
