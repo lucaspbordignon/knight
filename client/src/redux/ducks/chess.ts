@@ -7,15 +7,21 @@ import { getPossibleMovesData } from '../../api/chess/pieces'
 /* Types */
 const Types = {
   BOARD: 'chess/GET_BOARD',
+  GRID: 'chess/SHOW_GRID',
   MOVES: 'chess/GET_POSSIBLE_MOVES',
+  TURNS: 'chess/CHANGE_TURNS',
 }
 
 /* Actions */
 export const getBoard = createActionThunk(Types.BOARD, () => getBoardData())
 
+export const showGrid = createActionThunk(Types.GRID, ({ grid }) => {})
+
 export const getPossibleMoves = createActionThunk(Types.MOVES, ({ position, turns }) =>
   getPossibleMovesData(position, turns),
 )
+
+export const changeTurns = createActionThunk(Types.TURNS, ({ turns }) => {})
 
 /* Reducers */
 
@@ -24,6 +30,8 @@ export const initialState = {
   boardSize: 8,
   currentPosition: null,
   possibleMoves: [],
+  turns: 2,
+  grid: true,
 
   loading: false,
   error: null,
@@ -31,6 +39,14 @@ export const initialState = {
 
 export const chess = handleActions(
   {
+    [changeTurns.STARTED]: (state, action) => ({
+      ...state,
+      turns: action.payload.turns,
+    }),
+    [showGrid.STARTED]: (state, action) => ({
+      ...state,
+      grid: action.payload.grid,
+    }),
     [getBoard.STARTED]: (state) => ({
       ...state,
       loading: true,

@@ -2,9 +2,10 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { Button, Icon, Layout, Menu, Modal } from 'antd'
+import { Col, Layout, Row, Tabs } from 'antd'
+import { Button, Checkbox, InputNumber, Modal } from 'antd'
 
-import { getBoard, getPossibleMoves } from '../../redux/ducks/chess'
+import { changeTurns, getBoard, getPossibleMoves, showGrid } from '../../redux/ducks/chess'
 
 import { Board } from '../chess'
 
@@ -49,7 +50,8 @@ class HomeComponent extends React.Component<any, HomeState> {
           <p>
             For developers, the code of the application is open source and can be found at
             <a href="https://github.com/lucaspbordignon/knight" target="_blank" rel="noopener noreferrer">
-              GitHub
+              {' '}
+              GitHub{' '}
             </a>
           </p>
         </Modal>
@@ -57,35 +59,61 @@ class HomeComponent extends React.Component<any, HomeState> {
     )
   }
 
+  renderSettings() {
+    const { changeTurns, chess, showGrid } = this.props
+    const { grid, turns } = chess
+
+    return (
+      <Row>
+        <Col span={24}>
+          Number of turns:
+          <InputNumber min={1} max={300} defaultValue={turns} onChange={(turns) => changeTurns({ turns })} />
+        </Col>
+
+        <Col span={24}>
+          <Checkbox checked={grid} onChange={(event) => showGrid({ grid: event.target.checked })}>
+            Show chess board grid
+          </Checkbox>
+        </Col>
+      </Row>
+    )
+  }
+
   render() {
     const { chess, getPossibleMoves } = this.props
-    const { board, boardSize, loading, possibleMoves, currentPosition } = chess
+    const { board, boardSize, currentPosition, loading, possibleMoves, turns } = chess
 
     return (
       <Layout>
         <Layout.Header>
-          <Menu theme="dark" mode="horizontal" style={{ lineHeight: '64px' }}>
-            <Menu.Item key="logo" className="logo-btn" disabled>
-              Knight
-            </Menu.Item>
-
-            <Menu.Item key="settings" className="settings-btn">
-              <Icon type="setting" />
-            </Menu.Item>
-          </Menu>
+          <Row>
+            <Col span={24}>
+              <div>Icone legal</div>
+            </Col>
+          </Row>
         </Layout.Header>
 
         <Layout.Content className="content-container">
-          <Board
-            loading={loading}
-            size={boardSize}
-            turns={1}
-            data={board}
-            possibleMoves={possibleMoves}
-            currentPosition={currentPosition}
-            getPossibleMoves={getPossibleMoves}
-          />
+          <Tabs defaultActiveKey="board">
+            <Tabs.TabPane tab="Chess Board" key="board">
+              <Board
+                loading={loading}
+                size={boardSize}
+                turns={turns}
+                data={board}
+                possibleMoves={possibleMoves}
+                currentPosition={currentPosition}
+                getPossibleMoves={getPossibleMoves}
+              />
+            </Tabs.TabPane>
+
+            <Tabs.TabPane tab="Settings" key="settings">
+              {this.renderSettings()}
+            </Tabs.TabPane>
+          </Tabs>
         </Layout.Content>
+
+        <Layout.Footer style={{ textAlign: 'center' }}>Made with love by Lucas P. Bordignon</Layout.Footer>
 
         {this.renderWelcomeModal()}
       </Layout>
@@ -98,8 +126,10 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
+  changeTurns: bindActionCreators(changeTurns, dispatch),
   getBoard: bindActionCreators(getBoard, dispatch),
   getPossibleMoves: bindActionCreators(getPossibleMoves, dispatch),
+  showGrid: bindActionCreators(showGrid, dispatch),
 })
 
 export const Home = connect(
