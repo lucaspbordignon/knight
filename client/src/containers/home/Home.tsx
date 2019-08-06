@@ -5,9 +5,10 @@ import { bindActionCreators } from 'redux'
 import { Col, Layout, Row, Tabs } from 'antd'
 import { Button, Checkbox, InputNumber, Modal } from 'antd'
 
-import { changeTurns, getBoard, getPossibleMoves, showGrid } from '../../redux/ducks/chess'
-
+import { ReactComponent as KnightIcon } from '../../assets/icons/logo.svg'
 import { Board } from '../chess'
+
+import { changeTurns, getBoard, getPossibleMoves, showGrid } from '../../redux/ducks/chess'
 
 import 'antd/dist/antd.css'
 import './home.scss'
@@ -88,7 +89,10 @@ class HomeComponent extends React.Component<any, HomeState> {
         <Layout.Header>
           <Row>
             <Col span={24}>
-              <div>Icone legal</div>
+              <div className="header">
+                <KnightIcon className="logo" />
+                Knight
+              </div>
             </Col>
           </Row>
         </Layout.Header>
@@ -113,7 +117,7 @@ class HomeComponent extends React.Component<any, HomeState> {
           </Tabs>
         </Layout.Content>
 
-        <Layout.Footer style={{ textAlign: 'center' }}>Made with love by Lucas P. Bordignon</Layout.Footer>
+        <Layout.Footer className="footer-container">Made with love by Lucas P. Bordignon</Layout.Footer>
 
         {this.renderWelcomeModal()}
       </Layout>

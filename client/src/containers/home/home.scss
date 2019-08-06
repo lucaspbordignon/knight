@@ -4,11 +4,20 @@
   min-height: 84vh;
 }
 
-.logo-btn {
+.footer-container {
+  text-align: center;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+
   color: white;
   font-size: 22px;
 }
 
-.settings-btn {
-  font-size: 20px;
+.logo {
+  width: 32px;
+  height: 32px;
+  margin-right: 1rem;
 }
