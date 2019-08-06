@@ -44,8 +44,8 @@ class HomeComponent extends React.Component<any, HomeState> {
           footer={[this.renderWelcomeFooter()]}
         >
           <p>
-            Knight is an app that calculates all possible moves for a Knight in a chess board. It's possible to set the
-            value of turns that must be used to the calculus inside the application.
+            Knight is an app that calculates all possible moves for a Knight in a chess board. It is possible to set the
+            value of turns that must be used inside the application.
           </p>
 
           <p>
@@ -69,11 +69,11 @@ class HomeComponent extends React.Component<any, HomeState> {
         <Row gutter={16}>
           <Col span={24}>Number of turns:</Col>
 
-          <Col span={4}>
+          <Col span={8}>
             <Slider min={1} max={16} value={turns} onChange={(turns) => changeTurns({ turns })} />
           </Col>
 
-          <Col span={20}>
+          <Col span={16}>
             <InputNumber min={1} max={1000} value={turns} onChange={(turns) => changeTurns({ turns })} />
           </Col>
 
