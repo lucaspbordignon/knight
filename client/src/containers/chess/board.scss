@@ -1,10 +1,28 @@
-.board-container {
-  margin: 5vh 0;
-}
-
 .board-content {
-  padding: 0 20rem;
+  padding: 0 26vw;
   min-width: 100%;
 
-  max-width: 72%;
+  @media only screen and (max-width: 1280px) {
+    padding: 0 22vw;
+  }
+
+  @media only screen and (max-width: 1100px) {
+    padding: 0 18vw;
+  }
+
+  @media only screen and (max-width: 980px) {
+    padding: 0 14vw;
+  }
+
+  @media only screen and (max-width: 890px) {
+    padding: 0 12vw;
+  }
+
+  @media only screen and (max-width: 720px) {
+    padding: 0 2vw;
+  }
+
+  @media only screen and (max-width: 600px) {
+    padding: 0;
+  }
 }

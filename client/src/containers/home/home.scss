@@ -2,6 +2,14 @@
   background-color: #f3f3f3;
   padding: 0 3rem;
   min-height: 84vh;
+
+  @media only screen and (max-width: 920px) {
+    padding: 0 2rem;
+  }
+
+  @media only screen and (max-width: 600px) {
+    padding: 0 1rem;
+  }
 }
 
 .footer-container {
