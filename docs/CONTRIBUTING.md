@@ -75,6 +75,6 @@ git push heroku master
 
 After all code changes made, feel free to open a pull-request to the main
 repository. You can write a few words describing which problem are you solving
-with those changes and a bit of an explanation of how it's being done.
+with those changes and a bit of an explanation of how it is being done.
 
 **Advice:** [How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/) is an excellent start for a great git usage (:

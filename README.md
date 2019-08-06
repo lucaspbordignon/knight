@@ -3,7 +3,7 @@
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/lucaspbordignon/knight/blob/master/LICENCE.md)
 
 Knight is an app that calculates all possible moves for a Knight in a chess board,
-given a number of turns. It's available under [knightapp.ml](https://knightapp.ml).
+given a number of turns. It is available under [knightapp.ml](https://knightapp.ml).
 
 The application was developed in Typescript, using Node and React. A
 [boilerplate](https://github.com/agencyenterprise/aeboilerplate) project,
@@ -19,7 +19,7 @@ As this data type has the exact number of bits as the number of houses
 in an 8x8 chessboard, we can use each bit to represent whether a given
 piece is present in a specific position.
 
-With that representation, it's possible to simple map patterns of
+With that representation, it is possible to simple map patterns of
 each piece of a chess match (as a knight) and, applying bit shifts and
 clippings, find the possible movements from a specific position on the board.
 
@@ -84,13 +84,13 @@ yarn api-test-watch
 
 ## Contributing
 
-As Knight is an open-source project, all help is welcome. If you're
+As Knight is an open-source project, all help is welcome. If you are
 interested in helping growing the project, please read the
 [contribution guidelines](https://github.com/lucaspbordignon/knight/blob/master/docs/CONTRIBUTING.md)
 as the first step.
 
 As the project was bootstraped by [AE.Studio boilerplate](https://github.com/agencyenterprise/aeboilerplate),
-the contribution guidelines are very similir between each other. If you're
+the contribution guidelines are very similar between each other. If you are
 interested, complementary information can be found
 [here](https://github.com/agencyenterprise/aeboilerplate/blob/master/docs/documentation.md).
 
