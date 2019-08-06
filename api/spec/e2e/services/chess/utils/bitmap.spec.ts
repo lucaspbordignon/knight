@@ -90,4 +90,43 @@ describe('Bitmap data structure', () => {
       })
     })
   })
+
+  describe('applyMask()', () => {
+    const size = 8
+
+    it('present on that column', () => {
+      const position = 10 /* Column C */
+
+      expect(bitmap.setPosition(position)).toBeTruthy()
+      expect(bitmap.isSet(position)).toBeTruthy()
+
+      bitmap.applyMask(['C'])
+
+      expect(bitmap.isSet(position)).toBeFalsy()
+    })
+
+    it('not present on that column', () => {
+      const position = 10 /* Column C */
+
+      expect(bitmap.setPosition(position)).toBeTruthy()
+      expect(bitmap.isSet(position)).toBeTruthy()
+
+      bitmap.applyMask(['H'])
+
+      expect(bitmap.isSet(position)).toBeTruthy()
+    })
+
+    describe('multiple masks', () => {
+      it('not present on that column', () => {
+        const position = 10 /* Column C */
+
+        expect(bitmap.setPosition(position)).toBeTruthy()
+        expect(bitmap.isSet(position)).toBeTruthy()
+
+        bitmap.applyMask(['G', 'H'])
+
+        expect(bitmap.isSet(position)).toBeTruthy()
+      })
+    })
+  })
 })
