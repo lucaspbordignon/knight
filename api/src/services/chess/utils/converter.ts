@@ -18,7 +18,7 @@ class PositionConverter {
     const col = this.cols[Math.floor(position / boardSize)]
     const row = this.rows[position % boardSize]
 
-    return col + row
+    return `${col}${row}`
   }
 
   public static getCol(position: string): string {

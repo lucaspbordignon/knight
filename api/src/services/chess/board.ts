@@ -5,7 +5,9 @@ const BOARD_SIZE = 8
 const renderBoard = (boardSize = BOARD_SIZE): Array<Array<object>> => {
   const board = []
   const allCols = PositionConverter.cols
-  const allRows = PositionConverter.rows.reverse()
+  const allRows = [...PositionConverter.rows]
+
+  allRows.reverse()
 
   allRows.map((row) => {
     const squares = []

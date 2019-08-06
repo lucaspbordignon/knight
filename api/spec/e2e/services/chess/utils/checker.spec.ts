@@ -1,7 +1,5 @@
-import _ from 'lodash'
-
 import { PositionChecker } from '../../../../../src/services/chess/utils/checker'
-import { clearTestData, db } from '../../../../spec-helper'
+import { clearTestData } from '../../../../spec-helper'
 
 describe('chess utils', () => {
   afterEach(async () => {
