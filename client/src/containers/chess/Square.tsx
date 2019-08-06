@@ -22,8 +22,6 @@ const Square: React.FunctionComponent<SquareProps> = (props) => {
     const row = bitmapPosition % boardSize
     const colDelta = Math.floor(bitmapPosition / boardSize) % 2
 
-    if (row === 0) return (row + 1 + colDelta) % 2 === 0
-
     return (row + colDelta) % 2 === 0
   }
 

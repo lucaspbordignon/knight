@@ -1,12 +1,6 @@
 class PositionChecker {
   errors: string
 
-  public static validMove(position: number): boolean {
-    if (position > 0 && position < 64) return true
-
-    return false
-  }
-
   constructor(public position: string) {
     this.position = position
     this.errors = null
