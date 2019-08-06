@@ -14,7 +14,7 @@ class Bitmap {
 
   public static columnMask(index: number, boardSize: number): Bitmap {
     const bitmap = new Bitmap()
-    const indexArray = [...new Array(boardSize).keys()].map((i) => i + index * boardSize)
+    const indexArray = [...new Array(boardSize).keys()].map((i) => index + i * boardSize)
 
     indexArray.forEach((pos) => bitmap.setPosition(pos))
 
@@ -54,7 +54,7 @@ class Bitmap {
       const index = PositionConverter.cols.indexOf(col)
       const columnMask = Bitmap.columnMask(index, 8)
 
-      finalMask = finalMask.or(columnMask)
+      finalMask = finalMask.or(columnMask.map)
     })
 
     this.map = this.map.and(finalMask.not())

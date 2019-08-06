@@ -29,55 +29,71 @@ class Knight {
 
     return [...Array(64).keys()]
       .map((position) => (finalBitmap.isSet(position) ? position : null))
-      .filter((move) => move)
+      .filter((move) => move !== null)
   }
 
   public firstMovePattern(): Long {
-    const bitmap = this.bitmap
+    const bitmap = new Bitmap(this.bitmap.map)
+
+    bitmap.applyMask(['H'])
 
     return bitmap.map.shiftLeft(17)
   }
 
   public secondMovePattern(): Long {
-    const bitmap = this.bitmap
+    const bitmap = new Bitmap(this.bitmap.map)
+
+    bitmap.applyMask(['G', 'H'])
 
     return bitmap.map.shiftLeft(10)
   }
 
   public thirdMovePattern(): Long {
-    const bitmap = this.bitmap
+    const bitmap = new Bitmap(this.bitmap.map)
 
-    return bitmap.map.shiftRight(6)
+    bitmap.applyMask(['G', 'H'])
+
+    return bitmap.map.shiftRightUnsigned(6)
   }
 
   public fourthMovePattern(): Long {
-    const bitmap = this.bitmap
+    const bitmap = new Bitmap(this.bitmap.map)
 
-    return bitmap.map.shiftRight(15)
+    bitmap.applyMask(['H'])
+
+    return bitmap.map.shiftRightUnsigned(15)
   }
 
   public fifthMovePattern(): Long {
-    const bitmap = this.bitmap
+    const bitmap = new Bitmap(this.bitmap.map)
+
+    bitmap.applyMask(['A'])
 
     return bitmap.map.shiftLeft(15)
   }
 
   public sixthMovePattern(): Long {
-    const bitmap = this.bitmap
+    const bitmap = new Bitmap(this.bitmap.map)
+
+    bitmap.applyMask(['A', 'B'])
 
     return bitmap.map.shiftLeft(6)
   }
 
   public seventhMovePattern(): Long {
-    const bitmap = this.bitmap
+    const bitmap = new Bitmap(this.bitmap.map)
 
-    return bitmap.map.shiftRight(10)
+    bitmap.applyMask(['A', 'B'])
+
+    return bitmap.map.shiftRightUnsigned(10)
   }
 
   public eigthiethMovePattern(): Long {
-    const bitmap = this.bitmap
+    const bitmap = new Bitmap(this.bitmap.map)
 
-    return bitmap.map.shiftRight(17)
+    bitmap.applyMask(['A'])
+
+    return bitmap.map.shiftRightUnsigned(17)
   }
 }
 

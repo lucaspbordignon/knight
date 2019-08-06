@@ -16,7 +16,7 @@ class PositionConverter {
   /* Converts Bitmap coordinate to Algebraic coordinates ('A1','C8',...) */
   public static toAlgebraic(position: number, boardSize: number): string {
     const col = this.cols[Math.floor(position / boardSize)]
-    const row = this.rows[position % boardSize || boardSize - 1]
+    const row = this.rows[position % boardSize]
 
     return col + row
   }
