@@ -45,6 +45,10 @@ needs.
   - Services: `api/src/services/chess/`
   - Tests: `api/spec/`
 
+## Screenshot
+
+![Screenshot](./screenshot.png)
+
 ## Running
 
 ### Development server
