@@ -26,3 +26,18 @@
     padding: 0;
   }
 }
+
+.grid-column {
+  text-align: center;
+  text-weight: bold;
+}
+
+.grid-row {
+  content: '';
+  padding-bottom: 90%;
+  text-align: center;
+}
+
+.grid-row-container {
+  padding-top: 80%;
+}

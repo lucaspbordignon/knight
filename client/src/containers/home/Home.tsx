@@ -74,7 +74,7 @@ class HomeComponent extends React.Component<any, HomeState> {
           </Col>
 
           <Col span={20}>
-            <InputNumber min={1} max={1000} defaultValue={turns} onChange={(turns) => changeTurns({ turns })} />
+            <InputNumber min={1} max={1000} value={turns} onChange={(turns) => changeTurns({ turns })} />
           </Col>
 
           <Col span={24}>
@@ -90,7 +90,7 @@ class HomeComponent extends React.Component<any, HomeState> {
 
   render() {
     const { chess, getPossibleMoves } = this.props
-    const { board, boardSize, currentPosition, loading, possibleMoves, turns } = chess
+    const { board, boardSize, currentPosition, grid, loading, possibleMoves, turns } = chess
 
     return (
       <Layout>
@@ -110,11 +110,12 @@ class HomeComponent extends React.Component<any, HomeState> {
             <Tabs.TabPane tab="Chess Board" key="board">
               <Board
                 loading={loading}
+                currentPosition={currentPosition}
+                grid={grid}
+                data={board}
                 size={boardSize}
                 turns={turns}
-                data={board}
                 possibleMoves={possibleMoves}
-                currentPosition={currentPosition}
                 getPossibleMoves={getPossibleMoves}
               />
             </Tabs.TabPane>

@@ -34,17 +34,11 @@ const Square: React.FunctionComponent<SquareProps> = (props) => {
   const squareClasses = (): string => {
     let classes = 'square'
 
-    if (isKnight()) {
-      classes = classes + ' knight'
-    }
+    if (isKnight()) classes = classes + ' knight'
 
-    if (isSelected()) {
-      return classes + ' selected'
-    }
+    if (isSelected()) return classes + ' selected'
 
-    if (isOddSquare()) {
-      return classes + ' odd'
-    }
+    if (isOddSquare()) return classes + ' odd'
 
     return classes
   }
