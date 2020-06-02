@@ -3,7 +3,7 @@
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/lucaspbordignon/knight/blob/master/LICENCE.md)
 
 Knight is an app that calculates all possible moves for a Knight in a chess board,
-given a number of turns. It is available under [knightapp.ml](https://knightapp.ml).
+given a number of turns. It is available under [knightapp.ml](https://knightapp.herokuapp.com).
 
 The application was developed in Typescript, using Node and React. A
 [boilerplate](https://github.com/agencyenterprise/aeboilerplate) project,
